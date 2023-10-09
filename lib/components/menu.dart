@@ -1,10 +1,11 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:precifica_ai/cadastro_produtos.dart';
 
 class PrincipalMenu {
   static Drawer get(context) {
     return Drawer(
-      backgroundColor: Colors.white,
       child: ListView(
         children: [
           UserAccountsDrawerHeader(

@@ -1,30 +1,34 @@
+// ignore_for_file: prefer_const_constructors, must_be_immutable, sort_child_properties_last
 
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:precifica_ai/cadastro_produtos.dart';
+import 'package:precifica_ai/components/carousel.dart';
 import 'package:precifica_ai/components/menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
   
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Cadastro de lista de Tarefa',
+      title: 'Precifica.aí Project',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange),
-        // textTheme: GoogleFonts.emilysCandyTextTheme(),
-        backgroundColor: Colors.orange[100],
+        colorScheme: ColorScheme.dark(),
+        
         useMaterial3: true,
       ),
       home: const MyHomePage(
-        title: 'Cadastro de lista de Tarefa',
+        title: 'Barra Lateral',
       ),
     );
   }
@@ -38,52 +42,61 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+
 class _MyHomePageState extends State<MyHomePage> {
+  
+final List<Widget> items = [
+    _buildImageWidget('images/iphone3.jpg'),
+    _buildImageWidget('images/iphone4.jpg'),
+    _buildImageWidget('images/iphone2.jpg'),
+  ];
+
+  final CarouselOptions carouselOptions = CarouselOptions(
+    height: 200.0,
+    aspectRatio: 16 / 9,
+    autoPlay: true,
+    autoPlayInterval: Duration(seconds: 3),
+    enlargeCenterPage: true,
+    enableInfiniteScroll: true,
+    viewportFraction: 0.30,
+  );
+
+  static Widget _buildImageWidget(String imagePath) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(
+          12.0), // Ajuste o valor para a curvatura desejada
+      child: Image.asset(
+        imagePath,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
           backgroundColor: Colors.black,
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-          // change color while the other colors stay the sam
-          // Here we take the value from the MyHomePage object that was created byS
-        // the App.build method, and use it to set our appbar title.
           title: Text(
             widget.title,
             style: TextStyle(color: Colors.white),
           )
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      
+      body: Column(
+        children: [
+          SizedBox(height: 20),
+          Container(
+            child: MyCarousel(
+              items: items,
+              carouselOptions: carouselOptions,
             ),
-            Text(
-              '0',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+          ),
+          Text('qualquer aa'),
+        ],   
       ),
+      
       floatingActionButton: Container(
         height: 70,
         width: 70,
