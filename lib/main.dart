@@ -2,9 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:precifica_ai/cadastro_produtos.dart';
 import 'package:precifica_ai/components/menu.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Cadastro de lista de Tarefa',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.orange),
+        // textTheme: GoogleFonts.emilysCandyTextTheme(),
+        backgroundColor: Colors.orange[100],
         useMaterial3: true,
       ),
       home: const MyHomePage(
@@ -39,13 +44,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
+          backgroundColor: Colors.black,
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
+          // change color while the other colors stay the sam
+          // Here we take the value from the MyHomePage object that was created byS
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+          title: Text(
+            widget.title,
+            style: TextStyle(color: Colors.white),
+          )
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
