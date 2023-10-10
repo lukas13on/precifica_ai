@@ -6,6 +6,10 @@ import 'package:precifica_ai/cadastro_produtos.dart';
 import 'package:precifica_ai/components/carousel.dart';
 import 'package:precifica_ai/components/menu.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:precifica_ai/components/product_card.dart';
+
+
+
 
 void main() {
   runApp(MyApp());
@@ -44,7 +48,8 @@ class MyHomePage extends StatefulWidget {
 
 
 class _MyHomePageState extends State<MyHomePage> {
-  
+
+
 final List<Widget> items = [
     _buildImageWidget('images/iphone3.jpg'),
     _buildImageWidget('images/iphone4.jpg'),
@@ -52,14 +57,16 @@ final List<Widget> items = [
   ];
 
   final CarouselOptions carouselOptions = CarouselOptions(
-    height: 200.0,
+    height: 270.0,
     aspectRatio: 16 / 9,
     autoPlay: true,
     autoPlayInterval: Duration(seconds: 3),
     enlargeCenterPage: true,
     enableInfiniteScroll: true,
-    viewportFraction: 0.30,
+    viewportFraction: 0.40,
   );
+  
+
 
   static Widget _buildImageWidget(String imagePath) {
     return ClipRRect(
@@ -88,14 +95,25 @@ final List<Widget> items = [
         children: [
           SizedBox(height: 20),
           Container(
+
             child: MyCarousel(
               items: items,
               carouselOptions: carouselOptions,
             ),
           ),
-          Text('qualquer aa'),
-        ],   
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ProductGridView(),
+          )
+        ],  
+        
+        
       ),
+
+      
+      
       
       floatingActionButton: Container(
         height: 70,
