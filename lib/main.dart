@@ -63,7 +63,7 @@ final List<Widget> items = [
     autoPlayInterval: Duration(seconds: 3),
     enlargeCenterPage: true,
     enableInfiniteScroll: true,
-    viewportFraction: 0.40,
+    viewportFraction: 0.35,
   );
   
 
@@ -107,14 +107,8 @@ final List<Widget> items = [
           Expanded(
             child: ProductGridView(),
           )
-        ],  
-        
-        
+        ],    
       ),
-
-      
-      
-      
       floatingActionButton: Container(
         height: 70,
         width: 70,
