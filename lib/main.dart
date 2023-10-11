@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: const MyHomePage(
-        title: 'Barra Lateral',
+        title: 'Precifica.Aí'
       ),
     );
   }
@@ -57,13 +57,14 @@ final List<Widget> items = [
   ];
 
   final CarouselOptions carouselOptions = CarouselOptions(
-    height: 270.0,
+    height: 250.0,
     aspectRatio: 16 / 9,
     autoPlay: true,
     autoPlayInterval: Duration(seconds: 3),
     enlargeCenterPage: true,
     enableInfiniteScroll: true,
-    viewportFraction: 0.35,
+    viewportFraction: 0.30,
+    
   );
   
 
@@ -84,7 +85,17 @@ final List<Widget> items = [
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
-          backgroundColor: Colors.black,
+          backgroundColor: Color.fromARGB(255, 25, 24, 24),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.search), // Ícone a ser exibido.
+              onPressed: () {
+                // Ação a ser executada quando o ícone for pressionado.
+              },
+              tooltip:
+                  'Pesquisar', // Texto de dica ao passar o mouse sobre o ícone (opcional).
+            ),
+          ],
           title: Text(
             widget.title,
             style: TextStyle(color: Colors.white),
@@ -95,7 +106,18 @@ final List<Widget> items = [
         children: [
           SizedBox(height: 20),
           Container(
-
+            width: double.infinity,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: Color.fromARGB(255, 49, 46, 46), // Cor da sombra.
+                  blurRadius: 100.0, // Raio de desfoque da sombra.
+                  spreadRadius: 4.0, // Espalhamento da sombra.
+                  offset: Offset(
+                      0, 2), // Deslocamento da sombra (horizontal, vertical).
+                ),
+              ],
+            ),
             child: MyCarousel(
               items: items,
               carouselOptions: carouselOptions,
@@ -105,7 +127,10 @@ final List<Widget> items = [
             height: 20,
           ),
           Expanded(
-            child: ProductGridView(),
+            child: Container(
+                width: double.infinity,
+                height: double.infinity,
+                child: ProductGridView()),
           )
         ],    
       ),
