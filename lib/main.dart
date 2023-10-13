@@ -3,6 +3,7 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:precifica_ai/components/bottonsheet.dart';
+import 'package:precifica_ai/components/searchbar.dart';
 import 'package:precifica_ai/pages/cadastro_produtos.dart';
 import 'package:precifica_ai/components/carousel.dart';
 import 'package:precifica_ai/components/menu.dart';
@@ -86,17 +87,38 @@ final List<Widget> items = [
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 25, 24, 24),
+          backgroundColor: Color.fromARGB(255, 0, 0, 0),
           actions: [
-            IconButton(
-              icon: Icon(Icons.search), // Ícone a ser exibido.
-              onPressed: () {
-                // Ação a ser executada quando o ícone for pressionado.
-              },
-              tooltip:
-                  'Pesquisar', // Texto de dica ao passar o mouse sobre o ícone (opcional).
+            Container(
+              padding: EdgeInsets.all(8),
+              height: 400,
+              width: 500,
+              alignment: Alignment.center,
+              child: SearchBar(
+                textStyle: MaterialStatePropertyAll(
+                    TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
+                backgroundColor: MaterialStateProperty.all<Color>(
+                  Color.fromARGB(255, 255, 255, 255),
+                ),
+                hintText: 'Pesquisar',
+                hintStyle: MaterialStatePropertyAll(
+                    TextStyle(color: Color.fromARGB(2, 0, 0, 0))),
+                onSubmitted: (String value) {
+                  print('Submitted: $value');
+                },
+              ),
             ),
+            IconButton(
+              onPressed: () {
+                
+              },
+              icon: Icon(
+                Icons.search,
+                color: Color.fromARGB(255, 255, 255, 255),
+              ),
+            )
           ],
+          
           title: Text(
             widget.title,
             style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),

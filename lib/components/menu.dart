@@ -9,8 +9,8 @@ class PrincipalMenu {
       child: ListView(
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text('Chana da Silva Sauro'),
-            accountEmail: Text('ricardo@gay.com'),
+            accountName: Text('Matheus Henrique Schuch'),
+            accountEmail: Text('matheus@email.com'),
             currentAccountPicture: CircleAvatar(
               radius: 30,
               backgroundImage: AssetImage('images/user.png'),

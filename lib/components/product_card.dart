@@ -94,6 +94,31 @@ class _ProductGridView extends State<ProductGridView> {
     'iPhone (1ª geração)',
   ];
 
+List<String> randomValues = [
+    '6.798,00',
+    '9.312,00',
+    '11.567,00',
+    '2.874,00',
+    '14.253,00',
+    '3.651,00',
+    '8.926,00',
+    '7.419,00',
+    '4.287,00',
+    '13.592,00',
+    '10.674,00',
+    '5.731,00',
+    '12.153,00',
+    '1.907,00',
+    '6.238,00',
+    '15.000,00',
+    '7.849,00',
+    '9.063,00',
+    '3.954,00',
+    '11.205,00',
+  ];
+
+// Agora você pode usar a lista randomValues no Flutter como valores de string.
+
 
   final List testeImages = [
     Image.asset('images/iphone3.jpg'),
@@ -234,7 +259,7 @@ class _ProductGridView extends State<ProductGridView> {
                               child: Row(
                                 children: [
                                   Text(
-                                    'R\$ 15.000,00',
+                                    'R\$ ${randomValues[index]}',
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.green,
