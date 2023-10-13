@@ -2,7 +2,8 @@
 
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
-import 'package:precifica_ai/cadastro_produtos.dart';
+import 'package:precifica_ai/components/bottonsheet.dart';
+import 'package:precifica_ai/pages/cadastro_produtos.dart';
 import 'package:precifica_ai/components/carousel.dart';
 import 'package:precifica_ai/components/menu.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -98,7 +99,7 @@ final List<Widget> items = [
           ],
           title: Text(
             widget.title,
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
           )
       ),
       
@@ -131,8 +132,10 @@ final List<Widget> items = [
                 width: double.infinity,
                 height: double.infinity,
                 child: ProductGridView()),
-          )
+          ),
+          
         ],    
+
       ),
       floatingActionButton: Container(
         height: 70,
@@ -172,6 +175,7 @@ final List<Widget> items = [
           ),
         ),
       ),
+      
     );
   }
 }

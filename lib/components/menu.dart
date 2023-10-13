@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:precifica_ai/cadastro_produtos.dart';
+import 'package:precifica_ai/pages/cadastro_produtos.dart';
 
 class PrincipalMenu {
   static Drawer get(context) {

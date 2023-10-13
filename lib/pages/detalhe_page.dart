@@ -5,30 +5,6 @@ import 'package:flutter/material.dart';
 class DetalhePage extends StatefulWidget {
   Map<String, dynamic> foto;
 
-  final List<Widget> items = [
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-    Image.asset('images/iphone3.jpg'),
-    Image.asset('images/iphone4.jpg'),
-    Image.asset('images/iphone2.jpg'),
-  ];
-
   DetalhePage({Key? key, required this.foto}) : super(key: key);
 
   @override
@@ -36,7 +12,6 @@ class DetalhePage extends StatefulWidget {
 }
 
 class _DetalhePageState extends State<DetalhePage> {
-  
   bool isFavorite = false;
 
   void toggleFavorite() {
@@ -127,7 +102,6 @@ class _DetalhePageState extends State<DetalhePage> {
                   ),
                 ],
               ),
-            
             ),
           ),
         ),
@@ -135,14 +109,3 @@ class _DetalhePageState extends State<DetalhePage> {
     );
   }
 }
-
-
-
-
-  
-  
-
-
-
-
-
