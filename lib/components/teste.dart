@@ -257,99 +257,11 @@ class _ProductGridView extends State<ProductGridView> {
             ],
           ),
         ),
-        body: Container(
-          child: GridView.count(
-              padding:
-                  EdgeInsets.only(top: 0, left: 160, right: 160, bottom: 10),
-              crossAxisCount: 4,
-              crossAxisSpacing: 15,
-              mainAxisSpacing: 15,
-              childAspectRatio: 1,
-              children: List.generate(produtos.length, (index) {
-                Produtos product = produtos[index];
-                return Card(
-                  child: Container(
-                    width: double.infinity,
-                    height: double.infinity,
-                    decoration: BoxDecoration(
-                      color: Color.fromARGB(255, 29, 30, 32),
-                      border: Border.all(
-                        width: 0.5,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color:
-                              Color.fromARGB(255, 26, 24, 24), // Cor da sombra
-                          offset: Offset(0,
-                              4), // Deslocamento da sombra (horizontal, vertical)
-                          blurRadius: 10, // Raio de desfoque da sombra
-                          spreadRadius: 0, // Espalhamento da sombra
-                        ),
-                      ],
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Container(
-                          width: double.maxFinite,
-                          padding: EdgeInsets.all(2),
-                          child: Text(names[index],
-                              style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 18,
-                              ),
-                              textAlign: TextAlign.center),
-                        ),
-                        SizedBox(height: 10),
-                        Container(
-                            height: 200,
-                            decoration:
-                                BoxDecoration(border: Border.all(width: 0.5)),
-                            width: double.maxFinite,
-                            child: Card(
-                              child: CachedNetworkImage(
-                                imageUrl: urlsDasImagens[index],
-                                placeholder: (context, url) =>
-                                    CircularProgressIndicator(),
-                                errorWidget: (context, url, error) =>
-                                    Icon(Icons.error),
-                              ),
-                            )),
-                        SizedBox(height: 10),
-                        Container(
-                          height: 30,
-                          child: Row(
-                            children: [
-                              Text(
-                                'R\$ ${randomValues[index]}',
-                                style: TextStyle(
-                                  fontSize: 18,
-                                  color: Colors.green,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                              IconButton(
-                                alignment: AlignmentDirectional.topCenter,
-                                icon: Icon(
-                                  isFavorite
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
-                                  color: isFavorite ? Colors.red : null,
-                                ),
-                                onPressed: toggleFavorite,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              })),
-        ));
+        body: GridView.count(
+            crossAxisCount: 2,
+            children: List.generate(produtos.length, (index) {
+              Produtos product = produtos[index];
+              return Card(child: Text(product.url));
+            })));
   }
 }

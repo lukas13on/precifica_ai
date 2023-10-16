@@ -3,7 +3,6 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
 import 'package:precifica_ai/components/bottonsheet.dart';
-import 'package:precifica_ai/components/searchbar.dart';
 import 'package:precifica_ai/pages/cadastro_produtos.dart';
 import 'package:precifica_ai/components/carousel.dart';
 import 'package:precifica_ai/components/menu.dart';
