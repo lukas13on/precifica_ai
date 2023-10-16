@@ -1,11 +1,14 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:precifica_ai/components/product_card.dart';
 
 class DetalhePage extends StatefulWidget {
-  Map<String, dynamic> foto;
+  final Produtos produto;
 
-  DetalhePage({Key? key, required this.foto}) : super(key: key);
+  DetalhePage({required this.produto});
+
 
   @override
   State<DetalhePage> createState() => _DetalhePageState();
@@ -24,7 +27,7 @@ class _DetalhePageState extends State<DetalhePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.foto['title']),
+        title: Text(widget.produto.name),
       ),
       body: ListView(children: [
         SizedBox(
@@ -33,7 +36,7 @@ class _DetalhePageState extends State<DetalhePage> {
         Center(
           child: Container(
             width: 500,
-            height: 600,
+            height: 500,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
@@ -56,7 +59,7 @@ class _DetalhePageState extends State<DetalhePage> {
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Text(
-                      widget.foto['title'],
+                    widget.produto.name,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -65,8 +68,13 @@ class _DetalhePageState extends State<DetalhePage> {
                   ),
                   SizedBox(
                       height: 300,
-                      width: 400,
-                      child: Image.asset('assets/images/iphone3.jpg')),
+                  width: double.maxFinite,
+                  child: CachedNetworkImage(
+                    imageUrl: widget.produto.url,
+                    placeholder: (context, url) => CircularProgressIndicator(),
+                    errorWidget: (context, url, error) => Icon(Icons.error),
+                  ),
+                ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
@@ -76,32 +84,46 @@ class _DetalhePageState extends State<DetalhePage> {
                       ),
                     ),
                   ),
-                  Padding(
-                    padding:
-                        EdgeInsets.only(top: 8, left: 0, right: 8, bottom: 8),
-                    child: Text(
-                      'R\$ 99.99',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.green,
-                        fontWeight: FontWeight.bold,
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding:
+                            EdgeInsets.fromLTRB(10, 1, 0, 1),
+                      child: Text(
+                        'R\$ ${widget.produto.preco}',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.green,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconButton(
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(280, 1, 0, 1),
+                      child: IconButton(
+                        icon: Icon(Icons.shopping_cart_outlined),
+                        onPressed: () {},
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(0, 1, 0, 1),
+                      child: IconButton(
                         icon: Icon(
                           isFavorite ? Icons.favorite : Icons.favorite_border,
                           color: isFavorite ? Colors.red : null,
                         ),
                         onPressed: toggleFavorite,
-                      )
+                      ),
+                    )
                     ],
+                  
+                  
+                    
+                  
+                  
                   ),
-                ],
-              ),
+              ]),
             ),
           ),
         ),
