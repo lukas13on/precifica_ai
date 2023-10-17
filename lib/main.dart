@@ -1,7 +1,5 @@
-// ignore_for_file: prefer_const_constructors, must_be_immutable, sort_child_properties_last
-
-import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_options.dart';
 import 'package:precifica_ai/components/bottonsheet.dart';
 import 'package:precifica_ai/pages/cadastro_produtos.dart';
 import 'package:precifica_ai/components/carousel.dart';
@@ -9,19 +7,11 @@ import 'package:precifica_ai/components/menu.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:precifica_ai/components/product_card.dart';
 
-
-
-
 void main() {
   runApp(MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
-  
-
-  MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,11 +19,10 @@ class MyApp extends StatelessWidget {
       title: 'Precifica.aí Project',
       theme: ThemeData(
         colorScheme: ColorScheme.dark(),
-        
         useMaterial3: true,
       ),
       home: const MyHomePage(
-        title: 'Precifica.Aí'
+        title: 'Precifica.Aí',
       ),
     );
   }
@@ -47,11 +36,8 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-
 class _MyHomePageState extends State<MyHomePage> {
-
-
-final List<Widget> items = [
+  final List<Widget> items = [
     _buildImageWidget('images/iphone3.jpg'),
     _buildImageWidget('images/iphone4.jpg'),
     _buildImageWidget('images/iphone2.jpg'),
@@ -65,15 +51,11 @@ final List<Widget> items = [
     enlargeCenterPage: true,
     enableInfiniteScroll: true,
     viewportFraction: 0.30,
-    
   );
-  
-
 
   static Widget _buildImageWidget(String imagePath) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(
-          12.0), // Ajuste o valor para a curvatura desejada
+      borderRadius: BorderRadius.circular(12.0),
       child: Image.asset(
         imagePath,
         fit: BoxFit.cover,
@@ -86,77 +68,73 @@ final List<Widget> items = [
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          actions: [
-            Container(
-              padding: EdgeInsets.all(8),
-              height: 400,
-              width: 500,
-              alignment: Alignment.center,
-              child: SearchBar(
-                textStyle: MaterialStatePropertyAll(
-                    TextStyle(color: Color.fromARGB(255, 0, 0, 0))),
-                backgroundColor: MaterialStateProperty.all<Color>(
-                  Color.fromARGB(255, 255, 255, 255),
-                ),
-                hintText: 'Pesquisar',
-                hintStyle: MaterialStatePropertyAll(
-                    TextStyle(color: Color.fromARGB(2, 0, 0, 0))),
-                onSubmitted: (String value) {
-                  print('Submitted: $value');
-                },
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                
-              },
-              icon: Icon(
-                Icons.search,
-                color: Color.fromARGB(255, 255, 255, 255),
-              ),
-            )
-          ],
-          
-          title: Text(
-            widget.title,
-            style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
-          )
-      ),
-      
-      body: Column(
-        children: [
-          SizedBox(height: 20),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        actions: [
           Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Color.fromARGB(255, 49, 46, 46), // Cor da sombra.
-                  blurRadius: 100.0, // Raio de desfoque da sombra.
-                  spreadRadius: 4.0, // Espalhamento da sombra.
-                  offset: Offset(
-                      0, 2), // Deslocamento da sombra (horizontal, vertical).
-                ),
-              ],
+            padding: EdgeInsets.all(8),
+            height: 400,
+            width: 500,
+            alignment: Alignment.center,
+            child: SearchBar(
+              textStyle: MaterialStatePropertyAll(
+                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
+              ),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                Color.fromARGB(255, 255, 255, 255),
+              ),
+              hintText: 'Pesquisar',
+              hintStyle: MaterialStatePropertyAll(
+                TextStyle(color: Color.fromARGB(2, 0, 0, 0)),
+              ),
+              onSubmitted: (String value) {
+                print('Submitted: $value');
+              },
             ),
-            child: MyCarousel(
-              items: items,
-              carouselOptions: carouselOptions,
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: Icon(
+              Icons.search,
+              color: Color.fromARGB(255, 255, 255, 255),
             ),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Expanded(
-            child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                child: ProductGridView()),
-          ),
-          
-        ],    
-
+          )
+        ],
+        title: Text(
+          widget.title,
+          style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 20),
+            Container(
+              width: double.infinity,
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Color.fromARGB(255, 49, 46, 46),
+                    blurRadius: 100.0,
+                    spreadRadius: 4.0,
+                    offset: Offset(0, 2),
+                  ),
+                ],
+              ),
+              child: MyCarousel(
+                items: items,
+                carouselOptions: carouselOptions,
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              width: double.maxFinite,
+              height: 3000,
+              child: ProductGridView(),
+            ),
+          ],
+        ),
       ),
       floatingActionButton: Container(
         height: 70,
@@ -185,18 +163,10 @@ final List<Widget> items = [
               Icons.shopping_bag,
               color: Color.fromARGB(255, 203, 154, 5),
               size: 18,
-              // shadows: [
-              //   Shadow(
-              //     color: Colors.black,
-              //     offset: Offset(0.2, 0.5),
-              //     blurRadius: 5.0,
-              //   )
-              // ],
             ),
           ),
         ),
       ),
-      
     );
   }
 }
