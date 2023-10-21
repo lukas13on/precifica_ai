@@ -31,7 +31,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -63,42 +62,14 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
+  String searchText = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: PrincipalMenu.get(context),
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        actions: [
-          Container(
-            padding: EdgeInsets.all(8),
-            height: 400,
-            width: 500,
-            alignment: Alignment.center,
-            child: SearchBar(
-              textStyle: MaterialStatePropertyAll(
-                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-              ),
-              backgroundColor: MaterialStateProperty.all<Color>(
-                Color.fromARGB(255, 255, 255, 255),
-              ),
-              hintText: 'Pesquisar',
-              hintStyle: MaterialStatePropertyAll(
-                TextStyle(color: Color.fromARGB(2, 0, 0, 0)),
-              ),
-              onSubmitted: (String value) {
-                print('Submitted: $value');
-              },
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              color: Color.fromARGB(255, 255, 255, 255),
-            ),
-          )
-        ],
         title: Text(
           widget.title,
           style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
