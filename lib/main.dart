@@ -86,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
               hintStyle: MaterialStatePropertyAll(
                 TextStyle(color: Color.fromARGB(2, 0, 0, 0)),
               ),
-              onSubmitted: (String value) {
+              onChanged: (String value) {
                 print('Submitted: $value');
               },
             ),

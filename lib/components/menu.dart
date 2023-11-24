@@ -39,18 +39,6 @@ class PrincipalMenu {
             subtitle: Text('Meus favoritos'),
             trailing: Icon(Icons.arrow_forward),
           ),
-          ListTile(
-            leading: Icon(Icons.task),
-            title: Text('Visualize suas tarefas...'),
-            subtitle: Text('Tasks'),
-            trailing: Icon(Icons.burst_mode),
-          ),
-          ListTile(
-            leading: Icon(Icons.task_sharp),
-            title: Text('Adicionar Novas Tarefas...'),
-            subtitle: Text('+ Tasks'),
-            trailing: Icon(Icons.task_alt),
-          )
         ],
       ),
     );
