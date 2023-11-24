@@ -29,6 +29,9 @@ class _ProductGridView extends State<ProductGridView> {
     });
   }
 
+  List<Produtos> produtosFiltrados = []; // Lista filtrada de produtos
+  String searchText = ''; // Texto de pesquisa
+
   List<Produtos> produtos = [
     Produtos(
       'iPhone 13 Pro Max',
@@ -159,6 +162,14 @@ class _ProductGridView extends State<ProductGridView> {
         false),
   ];
 
+  void filterProducts(String searchText) {
+    setState(() {
+      produtosFiltrados = produtos.where((produto) {
+        return produto.name.toLowerCase().contains(searchText.toLowerCase());
+      }).toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -166,22 +177,38 @@ class _ProductGridView extends State<ProductGridView> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Precifica.Ai',
-              style: TextStyle(
-                shadows: [
-                  Shadow(
-                    color: Color.fromARGB(255, 64, 62, 62), // Cor da sombra
-                    offset: Offset(
-                        3, 3), // Deslocamento da sombra (horizontal, vertical)
-                    blurRadius: 5, // Raio de desfoque da sombra
-                  ),
-                ],
-                color: Color.fromARGB(255, 255, 255, 255),
-                fontSize: 20,
-                fontWeight: FontWeight.w800,
+            Container(
+            padding: EdgeInsets.all(10),
+            height: 400,
+            width: 500,
+            alignment: Alignment.center,
+            child: SearchBar(
+              textStyle: MaterialStatePropertyAll(
+                TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
               ),
+              backgroundColor: MaterialStateProperty.all<Color>(
+                Color.fromARGB(255, 255, 255, 255),
+              ),
+              hintText: 'Pesquisar',
+              hintStyle: MaterialStatePropertyAll(
+                TextStyle(color: Color.fromARGB(2, 0, 0, 0)),
+              ),
+              onChanged: (String value) {
+                setState(() {
+                  searchText = value;
+                });
+              },
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              filterProducts(searchText);
+            },
+            icon: Icon(
+              Icons.search,
+              color: Color.fromARGB(255, 255, 255, 255),
+            ),
+          )
           ],
         ),
       ),
@@ -191,8 +218,8 @@ class _ProductGridView extends State<ProductGridView> {
           crossAxisSpacing: 15,
           mainAxisSpacing: 15,
           childAspectRatio: 1,
-          children: List.generate(produtos.length, (index) {
-            Produtos product = produtos[index];
+          children: List.generate((produtosFiltrados.isEmpty ? produtos.length : produtosFiltrados.length), (index) {
+            Produtos product = (produtosFiltrados.isEmpty ? produtos[index] : produtosFiltrados[index]);
             bool isFavorite = product.isFavorite;
             return GestureDetector(
               onTap: () {
